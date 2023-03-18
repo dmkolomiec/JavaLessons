@@ -71,8 +71,8 @@ class FileEncrypter {
     }
 
     /**
-     * @param workMode  true - утворювати вихідний файл, false - не утворювати
-     * @param stopWord  стоп-слово, після якого зупиняти обробку
+     * @param workMode true - утворювати вихідний файл, false - не утворювати
+     * @param stopWord стоп-слово, після якого зупиняти обробку, "" - якщо что-слова нема.
      */
     public void encrypt(boolean workMode, String stopWord) {
         String clause;
@@ -103,6 +103,9 @@ class FileEncrypter {
                 // Можливості пошуку закінчуються по стоп-слову.
                 if (!stopWord.isEmpty() && clause.contains(stopWord)) {
                     String s = clause.substring(clause.indexOf(stopWord));
+                    // Вивести початок строки до стоп-слова
+                    if (workMode) bufferedWriter.write(clause.substring(0, clause.indexOf(stopWord)) + "\r\n");
+
                     int lastIndex = 0;
                     // відняти знайдену кількість слів зі словнику в реченні після стоп-слова
                     while (lastIndex != -1) {
@@ -133,15 +136,11 @@ class FileEncrypter {
 
 public class Main {
     public static void main(String[] args) {
-        FileEncrypter e;
+        FileEncrypter e = new FileEncrypter("прийменники.txt", "step4.txt");
 
-        e = new FileEncrypter("прийменники.txt", "step4.txt");
-        e.encrypt(false, "");
+        e.encrypt(false, "");      // новий файл не створювати, стоп-слова нема
+        e.encrypt(false, "stop");  // новий файл не створювати, стоп слово є
 
-        e = new FileEncrypter("прийменники.txt", "step4.txt");
-        e.encrypt(false, "stop");
-
-        e = new FileEncrypter("прийменники.txt", "step4.txt");
-        e.encrypt(true, "stop");
+        e.encrypt(true, "stop");   // оброблений текст у вивести у новий файл, стоп слово є
     }
 }
