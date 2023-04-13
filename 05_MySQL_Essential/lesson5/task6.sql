@@ -8,4 +8,4 @@ select o.OrderID,
 			join products p on p.ProdID = od.prodid
 			where od.OrderID = o.orderid) "Що" 
 from orders o
--- where (select sum(od.TotalPrice) from orderdetails od where od.orderid = o.orderid) > 1000;
+where (select sum(od.TotalPrice) from orderdetails od where od.orderid = o.orderid) > 1000;
