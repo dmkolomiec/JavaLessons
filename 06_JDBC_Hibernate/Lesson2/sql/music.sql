@@ -8,6 +8,7 @@
 *************/
 drop schema if exists music;
 create schema music DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;
+use music;
 
 drop table if exists genre;
 
@@ -97,18 +98,16 @@ create table album(
     trackNumber int unique not null,
     constraint album_fk1 foreign key (trackId) references track(trackId) on delete no action on update no action
 );
-
+/*
 insert into album (trackId, trackNumber)
 select t.trackId, row_Number() over() rn
 --		t.trackName, t.duration,
 --        time(sum(t.duration) over ()) AllDuration
 from track t
 inner join genre g on g.genreId = t.genreId AND g.descr = 'Hip hop';
-
-select * from album a;
+*/
 select a.*, t.trackName, t.duration, au.fullName, g.descr
 from album a
 join track t on t.trackId = a.trackId
 join genre g on g.genreId = t.genreId
 join author au on au.authorId = t.authorId;
-
