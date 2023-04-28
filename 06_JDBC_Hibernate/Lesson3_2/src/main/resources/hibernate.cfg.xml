@@ -27,7 +27,7 @@
         <property name="show_sql">true</property>
 
 
-        <mapping class="step1.Animal" />
+        <mapping class="task4.Animal" />
 
 
     </session-factory>
