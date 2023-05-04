@@ -80,10 +80,10 @@ public class AuthorHelper {
             em.persist(new Author("Name №" + i, "Lastname №" + i));
             if (i % 10 == 0) {
                 em.flush();
-                logger.info("addAuthorBulk " + i);
+                logger.info("addAuthorBulk " + i + " <- end");
             }
         }
         em.getTransaction().commit();
-        logger.info("addAuthorBulk " + i);
+        logger.info("addAuthorBulk " + (i-1));
     }
 }

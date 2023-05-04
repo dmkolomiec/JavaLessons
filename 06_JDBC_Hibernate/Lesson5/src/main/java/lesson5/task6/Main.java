@@ -15,7 +15,7 @@ public class Main {
 
         AuthorHelper ah = new AuthorHelper(hu);
 
-        ah.addAuthorBulk(30);
+        ah.addAuthorBulk(202);
 
         // загрузить авторов из таблицы в список
         System.out.println("===== Список после вставки =====");
