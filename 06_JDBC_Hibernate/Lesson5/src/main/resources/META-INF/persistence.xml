@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.2"
+             xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
+  http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
+
+    <!-- persistence-unit: основной элемент, содержащий настройки JPA-провайдера и подключения к базе данных.
+         name: имя persistence-unit. Это имя используется для получения экземпляра EntityManagerFactory.
+         transaction-type: тип транзакции, который используется для управления транзакциями. В данном случае используется локальная транзакция. -->
+    <persistence-unit name="lesson5-persistence-unit" transaction-type="RESOURCE_LOCAL">  <!-- -->
+
+        <!-- provider: имя класса JPA-провайдера. -->
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+
+        <!-- Конфигурация классов, которые будут управляться JPA -->
+        <!--
+            <class>task6.entity.Author</class>
+            <class>task6.entity.Book</class>
+        -->
+
+        <!-- properties: настройки подключения к базе данных и настройки Hibernate. -->
+        <properties>
+
+            <property name="hibernate.archive.autodetection" value="class"/>
+
+            <property name="javax.persistence.jdbc.driver"
+                      value="com.mysql.cj.jdbc.Driver"/>  <!-- com.mysql.jdbc.Driver -->
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/library"/>
+            <property name="javax.persistence.jdbc.user" value="root"/>
+            <property name="javax.persistence.jdbc.password" value="root"/>
+            <!-- Настройки Hibernate -->
+            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>
+            <property name="hibernate.hbm2ddl.auto" value="create"/>
+            <!-- hibernate.show_sql: показывать SQL-запросы в логе -->
+            <property name="hibernate.show_sql" value="false"/>
+            <!-- hibernate.format_sql: форматировать SQL-запросы в логе. -->
+            <property name="hibernate.format_sql" value="true"/>
+        </properties>
+
+
+    </persistence-unit>
+</persistence>
+
