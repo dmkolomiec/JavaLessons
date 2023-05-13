@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <!--    attributeFormDefault="unqualified" elementFormDefault="qualified"-->
+
+    <xs:element name="planes" type="Planes"/>
+
+    <xs:complexType name="Planes">
+        <xs:sequence>
+            <xs:element type="Model" name="model" minOccurs="3" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="Model">
+        <xs:sequence>
+            <xs:element name="manufacturer">
+                <xs:simpleType>
+                    <xs:restriction base="xs:normalizedString">
+                        <xs:enumeration value="Airbus"/>
+                        <xs:enumeration value="ATR"/>
+                        <xs:enumeration value="Boeing"/>
+                        <xs:enumeration value="Bombardier"/>
+                        <xs:enumeration value="Cessna"/>
+                        <xs:enumeration value="Embraer"/>
+                        <xs:enumeration value="Lockheed Martin"/>
+                        <xs:enumeration value="Northrop Grumman"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+
+            <xs:element name="price">
+                <xs:simpleType>
+                    <xs:restriction base="xs:decimal">
+                        <xs:minInclusive value="50000.00"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+
+            <xs:element name="type">
+                <xs:simpleType>
+                    <xs:restriction base="xs:token">
+                        <xs:enumeration value="пассажирские"/>
+                        <xs:enumeration value="транспортные"/>
+                        <xs:enumeration value="почтовые"/>
+                        <xs:enumeration value="курьерские"/>
+                        <xs:enumeration value="сельскохозяйственные"/>
+                        <xs:enumeration value="санитарные"/>
+                        <xs:enumeration value="пожарные"/>
+                        <xs:enumeration value="геологоразведочные"/>
+                        <xs:enumeration value="экспериментальные"/>
+                        <xs:enumeration value="спортивные"/>
+                        <xs:enumeration value="учебно-тренировочные"/>
+                        <xs:enumeration value="военные(все)"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="characteristics" type="Characteristics"/>
+        </xs:sequence>
+        <xs:attribute name="family" type="xs:normalizedString"/>
+        <xs:attribute name="variant" type="xs:normalizedString"/>
+    </xs:complexType>
+
+    <xs:complexType name="LoadParams">
+        <xs:sequence>
+            <xs:element name="maximumPayload">
+                <xs:simpleType>
+                    <xs:restriction base="xs:unsignedInt">
+                        <xs:minInclusive value="200"/>
+                        <xs:maxInclusive value="300000"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="seating" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:unsignedShort">
+                        <xs:minInclusive value="0"/>
+                        <xs:maxInclusive value="1000"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="Dimensions">
+        <xs:sequence>
+            <xs:element name="length">
+                <xs:simpleType>
+                    <xs:restriction base="xs:decimal">
+                        <xs:minInclusive value="10"/>
+                        <xs:maxInclusive value="100"/>
+                        <xs:fractionDigits value="2"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="wingspan">
+                <xs:simpleType>
+                    <xs:restriction base="xs:decimal">
+                        <xs:minInclusive value="5"/>
+                        <xs:maxInclusive value="100"/>
+                        <xs:fractionDigits value="2"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="height" minOccurs="0">
+                <xs:simpleType>
+                    <xs:restriction base="xs:decimal">
+                        <xs:minInclusive value="2"/>
+                        <xs:maxInclusive value="30"/>
+                        <xs:fractionDigits value="2"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="Characteristics">
+        <xs:sequence>
+            <xs:element name="crew" type="xs:unsignedByte" />
+            <xs:element name="loadParams" type="LoadParams"/>
+            <xs:element name="dimensions" type="Dimensions"/>
+        </xs:sequence>
+    </xs:complexType>
+
+</xs:schema>
