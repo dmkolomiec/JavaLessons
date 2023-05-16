@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<candies>
+  <!--4 or more repetitions:-->
+  <candy name="Київ вечірній">
+    <energy>560</energy>
+    <type>Праліне</type>
+    <proteins>7.3</proteins>
+    <fats>39.2</fats>
+    <carbohydrates>47.5</carbohydrates>
+  </candy>
+  <candy name="Raffaello">
+    <energy>627</energy>
+    <type>Горіхові</type>
+    <proteins>7.4</proteins>
+    <fats>48.3</fats>
+    <carbohydrates>38.6</carbohydrates>
+  </candy>
+  <candy name="Ferrero Rocher">
+    <energy>603</energy>
+    <type>Горіхово-шоколадні</type>
+    <proteins>8.2</proteins>
+    <fats>42.7</fats>
+    <carbohydrates>44.4</carbohydrates>
+  </candy>
+</candies>

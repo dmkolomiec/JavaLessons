@@ -1,0 +1,24 @@
+<?xml version="1.0" ?>
+<candies>
+    <candy name="Київ вечірній">
+        <energy>560</energy>
+        <type>Праліне</type>
+        <proteins>39.2</proteins>
+        <fats>39.2</fats>
+        <carbohydrates>47.5</carbohydrates>
+    </candy>
+    <candy name="Raffaello">
+        <energy>627</energy>
+        <type>Горіхові</type>
+        <proteins>48.3</proteins>
+        <fats>48.3</fats>
+        <carbohydrates>38.6</carbohydrates>
+    </candy>
+    <candy name="Ferrero Rocher">
+        <energy>603</energy>
+        <type>Горіхово-шоколадні</type>
+        <proteins>42.7</proteins>
+        <fats>42.7</fats>
+        <carbohydrates>44.4</carbohydrates>
+    </candy>
+</candies>

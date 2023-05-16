@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <!--    attributeFormDefault="unqualified" elementFormDefault="qualified"-->
+
+    <xs:element name="candies" type="Candies"/>
+
+    <xs:complexType name="Candies">
+        <xs:sequence>
+            <xs:element type="Candy" name="candy" minOccurs="4" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="Candy">
+        <xs:sequence>
+
+            <xs:element name="energy" type="xs:unsignedShort"/>
+
+            <xs:element name="type">
+                <xs:simpleType>
+                    <xs:restriction base="xs:normalizedString">
+                        <xs:enumeration value="Ірис"/>
+                        <xs:enumeration value="Асорті"/>
+                        <xs:enumeration value="Десерт"/>
+                        <xs:enumeration value="Марципан"/>
+                        <xs:enumeration value="Помадні"/>
+                        <xs:enumeration value="Праліне"/>
+                        <xs:enumeration value="Пташине молоко"/>
+                        <xs:enumeration value="Трюфель"/>
+                        <xs:enumeration value="Фрукти у шоколаді"/>
+                        <xs:enumeration value="Горіхові"/>
+                        <xs:enumeration value="Горіхово-шоколадні"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+
+            <xs:element name="proteins">
+                <xs:simpleType>
+                    <xs:restriction base="xs:decimal">
+                        <xs:minInclusive value="0"/>
+                        <xs:maxExclusive value="100"/>
+                        <xs:fractionDigits value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="fats">
+                <xs:simpleType>
+                    <xs:restriction base="xs:decimal">
+                        <xs:minInclusive value="0"/>
+                        <xs:maxExclusive value="100"/>
+                        <xs:fractionDigits value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="carbohydrates">
+                <xs:simpleType>
+                    <xs:restriction base="xs:decimal">
+                        <xs:minInclusive value="0"/>
+                        <xs:maxExclusive value="100"/>
+                        <xs:fractionDigits value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+        </xs:sequence>
+
+        <xs:attribute name="name" type="xs:token"/>
+    </xs:complexType>
+
+</xs:schema>

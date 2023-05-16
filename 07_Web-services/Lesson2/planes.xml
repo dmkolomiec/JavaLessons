@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNewSpaceSchemaLocation="planes_v3.xsd"-->
+<planes>
+    <model family="737 MAX" variant="737 MAX 8">
+        <manufacturer>Boeing</manufacturer>
+        <price>121000000.00</price>
+        <type>пассажирские</type>
+        <characteristics>
+            <crew>2</crew>
+            <loadParams>
+                <maximumPayload>20880</maximumPayload>
+                <seating>210</seating>
+            </loadParams>
+            <dimensions>
+                <length>39.47</length>
+                <wingspan>35.92</wingspan>
+            </dimensions>
+        </characteristics>
+    </model>
+    <model family="A320neo" variant="A321neo">
+        <manufacturer>Airbus</manufacturer>
+        <price>110600000.00</price>
+        <type>пассажирские</type>
+        <characteristics>
+            <crew>2</crew>
+            <loadParams>
+                <maximumPayload>20000</maximumPayload>
+                <seating>195</seating>
+            </loadParams>
+            <dimensions>
+                <length>37.57</length>
+                <wingspan>35.92</wingspan>
+                <height>11.76</height>
+            </dimensions>
+        </characteristics>
+    </model>
+    <model family="A380" variant="A380-800">
+        <manufacturer>Airbus</manufacturer>
+        <price>489000000.00</price>
+        <type>пассажирские</type>
+        <characteristics>
+            <crew>2</crew>
+            <loadParams>
+                <maximumPayload>150000</maximumPayload>
+                <seating>525</seating>
+            </loadParams>
+            <dimensions>
+                <length>73</length>
+                <wingspan>79.75</wingspan>
+                <height>24.09</height>
+            </dimensions>
+        </characteristics>
+    </model>
+    <model family="E-Jet" variant="E-195">
+        <manufacturer>Embraer</manufacturer>
+        <price>40000000.00</price>
+        <type>пассажирские</type>
+        <characteristics>
+            <crew>2</crew>
+            <loadParams>
+                <maximumPayload>13933</maximumPayload>
+                <seating>124</seating>
+            </loadParams>
+            <dimensions>
+                <length>38.65</length>
+                <wingspan>28.72</wingspan>
+                <height>10.28</height>
+            </dimensions>
+        </characteristics>
+    </model>
+</planes>
