@@ -1,0 +1,54 @@
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns="http://www.springframework.org/schema/beans" xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-4.3.xsd http://www.springframework.org/schema/util https://www.springframework.org/schema/util/spring-util.xsd">
+
+    <!-- Course -->
+    <bean id="course1" class="entity.Course">
+        <constructor-arg value="1"/>
+        <constructor-arg value="Java Starter"/>
+    </bean>
+    <bean id="course2" class="entity.Course">
+        <constructor-arg value="2"/>
+        <constructor-arg value="Java Essential"/>
+    </bean>
+    <bean id="course3" class="entity.Course">
+        <constructor-arg value="3"/>
+        <constructor-arg value="Java Advanced"/>
+    </bean>
+
+    <!-- CourseProvider -->
+    <bean id="providerCbs" class="entity.CourseProvider">
+        <constructor-arg value="CyberBionic Systematics Education System"/>
+    </bean>
+    <bean id="providerItvdn" class="entity.CourseProvider">
+        <constructor-arg value="Information Technology Video Development Network"/>
+    </bean>
+
+    <!-- Выбран обманный вариант key-type="int", иначе нибо нужно создавтаь бины для каждого Integer-а, либо ошибка.-->
+    <util:map id="coursesMap" map-class="java.util.HashMap" key-type="int" value-type="entity.Course">
+        <entry key="1" value-ref="course1"/>
+        <entry key="2" value-ref="course2"/>
+        <entry key="3" value-ref="course3"/>
+    </util:map>
+
+    <!-- Student -->
+    <bean id="student1" class="entity.Student" init-method="init">
+        <constructor-arg index="0" value="Дима"/>
+        <constructor-arg index="1" ref="providerCbs"/>
+        <constructor-arg index="2" ref="coursesMap"/>
+    </bean>
+
+    <bean id="student2" class="entity.Student">
+        <constructor-arg index="0" value="Nadia"/>
+        <constructor-arg index="1" ref="providerItvdn"/>
+    </bean>
+
+    <bean id="student3" class="entity.Student" init-method="init">
+        <property name="name" value="Максим"/>
+        <property name="provider" ref="providerCbs"/>
+        <property name="courses" ref="coursesMap"/>
+    </bean>
+
+
+</beans>
