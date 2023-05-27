@@ -1,0 +1,31 @@
+<!DOCTYPE web-app PUBLIC
+        "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+        "http://java.sun.com/dtd/web-app_2_3.dtd" >
+
+<web-app version="2.4">
+  <display-name>Archetype Created Web Application</display-name>
+  <!--Настройка DispatcherServlet-->
+  <servlet>
+    <servlet-name>dispatcher</servlet-name>
+    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <!--    Настройка маппинга. Мы указываем, что к нашему диспатчеру dispatcher мы будем обращаться через урулу / -->
+  <!--    А диспатчер в свою очередь будет определять, на какой контроллер перенаправлять запросы-->
+  <servlet-mapping>
+    <servlet-name>dispatcher</servlet-name>
+    <url-pattern>/</url-pattern>
+  </servlet-mapping>
+
+  <!--Настройка WebApplicationContext - конфигурация приложения-->
+  <!-- ContextLoaderListener загружает WebApplicationContext   -->
+  <context-param>
+    <param-name>contextConfigLocation</param-name>
+    <param-value>/WEB-INF/dispatcher-servlet.xml</param-value>
+  </context-param>
+  <listener>
+    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  </listener>
+
+
+</web-app>
