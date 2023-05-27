@@ -25,7 +25,6 @@ public class UserUtil {
 
     public static List<User> loadUsers() {
         try {
-            System.out.println(GetResourceDir());
             ObjectInputStream is = new ObjectInputStream(new FileInputStream(GetResourceDir() + USERS_FILE_NAME));
             return (List<User>) is.readObject();
         } catch (Exception e) {
