@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/data/jpa
+    http://www.springframework.org/schema/data/jpa/spring-jpa-1.0.xsd
+    http://www.springframework.org/schema/tx
+    http://www.springframework.org/schema/tx/spring-tx-3.1.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context-3.1.xsd
+    http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+
+    http://www.springframework.org/schema/mvc
+    https://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+    <mvc:annotation-driven/>
+
+    <context:component-scan base-package="lesson5.*"/>
+
+    <!--Указываем, что для наших аннотаций, что нашим менеджером транзакций будет бин из этого контекста-->
+    <tx:annotation-driven transaction-manager="txManager"/>
+
+    <!--    jpa конфигурация репозиториев -->
+    <jpa:repositories base-package="lesson5.repositories"
+                      entity-manager-factory-ref="entityManagerFactory" transaction-manager-ref="txManager"/>
+
+
+    <!--    В этом месте создается entityManagerFactory -->
+    <!--   value="item" это ссылка на имя persistence-unit name="item"  из persistance.xml-->
+    <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalEntityManagerFactoryBean">
+        <property name="persistenceUnitName" value="item"/>
+    </bean>
+
+    <!--    Создание TransactionManager, который получает ссылку на entityManagerFactory -->
+    <bean id="txManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+        <property name="entityManagerFactory" ref="entityManagerFactory"/>
+    </bean>
+
+    <bean id="dateBean" class="java.sql.Date">
+        <constructor-arg index="0" value="1990"/>
+        <constructor-arg index="1" value="06"/>
+        <constructor-arg index="2" value="04"/>
+    </bean>
+
+    <!--   new User("Vasily", "Rogov", Date.valueOf("1990-01-01"), true, "+123456789012", "vasrog@email.com"));-->
+    <bean id="user1" class="lesson5.entity.User">
+        <constructor-arg index="0" value="Vasily"/>
+        <constructor-arg index="1" value="Rogov"/>
+        <constructor-arg index="2" ref="dateBean" />
+        <constructor-arg index="3" value="true"/>
+        <constructor-arg index="4" value="+123456789012"/>
+        <constructor-arg index="5" value="vasrog@email.com"/>
+    </bean>
+
+</beans>
